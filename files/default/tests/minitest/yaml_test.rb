@@ -22,6 +22,10 @@ describe_recipe "apps-newrelic::yaml" do
       assert_equal "660".oct, (stat.mode & 007777)
     end
 
+    it "does not serialize any special types" do
+      yml.wont_include "!"
+    end
+
     it "is configured for staging, including the license key" do
       expected_yaml = {
         "license_key" => "abcdefghijklmnopqrstuvwxyz1234567890",
