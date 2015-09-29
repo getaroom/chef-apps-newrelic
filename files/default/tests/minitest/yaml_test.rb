@@ -26,9 +26,9 @@ describe_recipe "apps-newrelic::yaml" do
       yml.wont_include "!"
     end
 
-    it "is configured for staging, including the license key" do
+    it "is configured for staging, including the license" do
       expected_yaml = {
-        "license_key" => "abcdefghijklmnopqrstuvwxyz1234567890",
+        "license" => "abcdefghijklmnopqrstuvwxyz1234567890",
         "app_name" => "WWW (Staging)",
         "monitor_mode" => true,
         "developer_mode" => false,

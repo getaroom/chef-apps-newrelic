@@ -32,7 +32,7 @@ search :apps do |app|
       chef_environment_config = newrelic_config.fetch(node.chef_environment, {})
 
       framework_environment_config = Chef::Mixin::DeepMerge.merge(default_config, chef_environment_config)
-      framework_environment_config['license_key'] ||= node['newrelic']['license_key']
+      framework_environment_config['license'] ||= node['newrelic']['license']
       config = Apps::NewRelic::DeepToHash.to_hash(node['framework_environment'] => framework_environment_config)
 
       file "#{app['deploy_to']}/shared/config/newrelic.yml" do
